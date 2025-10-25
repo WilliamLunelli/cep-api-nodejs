@@ -1,0 +1,74 @@
+{
+	"info": {
+		"_postman_id": "205030a7-62c2-4cf2-b473-8eeb76a3da53",
+		"name": "CEP API - Egadnet Challenge",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "36980837"
+	},
+	"item": [
+		{
+			"name": "Health-Check",
+			"item": [
+				{
+					"name": "Health",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base}}/api/v1/cep/health",
+							"host": [
+								"{{base}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"cep",
+								"health"
+							]
+						},
+						"description": "Health Check:  \n\"Verifica se a API está funcionando. Não requer autenticação.\""
+					},
+					"response": []
+				}
+			],
+			"description": "Health Check:  \n\"Verifica se a API está funcionando. Não requer autenticação.\""
+		},
+		{
+			"name": "Login",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"description": "Login:  \n\"Obtém token JWT. Use as credenciais: admin / admin123\""
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"description": "Logout:  \n\"Invalida o token atual (blacklist). Requer autenticação.\""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cep",
+			"item": [
+				{
+					"name": "cep",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"description": "Consultar CEP:  \n\"Consulta um CEP. Requer token de autenticação no header.\""
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
