@@ -1,9 +1,19 @@
-import { Response } from 'express';
+import { Request, Response, NextFunction } from 'express';
 import { ZodError } from 'zod';
 
-export const errorHandler = (error: any, res: Response): void => {
+/**
+ * Error Handler Global
+ * IMPORTANTE: Deve ter EXATAMENTE 4 parâmetros para o Express reconhecer!
+ */
+export const errorHandler = (
+  error: any,
+  req: Request, // ← Adicione isso!
+  res: Response,
+  next: NextFunction // ← Adicione isso!
+): void => {
   console.error('❌ Erro capturado:', error);
 
+  // Erros de validação (Zod)
   if (error instanceof ZodError) {
     res.status(400).json({
       success: false,
@@ -20,6 +30,7 @@ export const errorHandler = (error: any, res: Response): void => {
     return;
   }
 
+  // Token JWT inválido
   if (error.name === 'JsonWebTokenError') {
     res.status(401).json({
       success: false,
@@ -32,6 +43,7 @@ export const errorHandler = (error: any, res: Response): void => {
     return;
   }
 
+  // Token JWT expirado
   if (error.name === 'TokenExpiredError') {
     res.status(401).json({
       success: false,
@@ -44,6 +56,7 @@ export const errorHandler = (error: any, res: Response): void => {
     return;
   }
 
+  // Erros relacionados a CEP
   if (error.message && error.message.includes('CEP')) {
     res.status(404).json({
       success: false,
@@ -56,6 +69,7 @@ export const errorHandler = (error: any, res: Response): void => {
     return;
   }
 
+  // Erros do Redis
   if (error.message && error.message.includes('Redis')) {
     res.status(503).json({
       success: false,
@@ -68,6 +82,7 @@ export const errorHandler = (error: any, res: Response): void => {
     return;
   }
 
+  // Erros de conexão (serviços externos)
   if (error.code === 'ECONNREFUSED' || error.code === 'ENOTFOUND') {
     res.status(503).json({
       success: false,
@@ -80,6 +95,7 @@ export const errorHandler = (error: any, res: Response): void => {
     return;
   }
 
+  // Erro genérico
   res.status(error.statusCode || 500).json({
     success: false,
     error: {

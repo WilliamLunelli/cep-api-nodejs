@@ -15,7 +15,7 @@ const startServer = async () => {
       console.log(`Health check: http://localhost:${PORT}/health`);
     });
   } catch (error) {
-    console.error('❌ Erro ao iniciar servidor:', error);
+    console.error('Erro ao iniciar servidor:', error);
     process.exit(1);
   }
 };

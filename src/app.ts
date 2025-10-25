@@ -9,18 +9,14 @@ dotenv.config();
 
 const app: Application = express();
 
-// Middlewares básicos
 app.use(express.json());
 app.use(cors());
 app.use(helmet());
 
+// Rotas
 app.use('/api/v1', routes);
+
+// Error handler (sempre por último!)
 app.use(errorHandler);
 
-// Rota de health check
-app.get('/health', (req, res) => {
-  res.json({ status: 'heakth ok', timestamp: new Date().toISOString() });
-});
-
-app.use(errorHandler);
 export default app;
