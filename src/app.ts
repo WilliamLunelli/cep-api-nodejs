@@ -14,7 +14,7 @@ app.use(helmet());
 
 // Rota de health check
 app.get('/health', (req, res) => {
-  res.json({ status: 'Funcionanddooo', timestamp: new Date().toISOString() });
+  res.json({ status: 'heakth ok', timestamp: new Date().toISOString() });
 });
 
 export default app;

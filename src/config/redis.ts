@@ -19,15 +19,15 @@ const getRedisClient = async (): Promise<RedisClientType> => {
   });
 
   redisClient.on('error', (err) => {
-    console.error('❌ Redis Client Error:', err);
+    console.error('Redis Client Error:', err);
   });
 
   redisClient.on('connect', () => {
-    console.log('🔄 Conectando ao Redis...');
+    console.log('Conectando ao Redis...');
   });
 
   redisClient.on('ready', () => {
-    console.log('✅ Redis conectado com sucesso!');
+    console.log('Redis conectado com sucesso!');
   });
 
   await redisClient.connect();
