@@ -11,8 +11,8 @@ const startServer = async () => {
 
     // Iniciar servidor
     app.listen(PORT, () => {
-      console.log(`🚀 Servidor rodando na porta ${PORT}`);
-      console.log(`📍 Health check: http://localhost:${PORT}/health`);
+      console.log(`Servidor rodando na porta ${PORT}`);
+      console.log(`Health check: http://localhost:${PORT}/health`);
     });
   } catch (error) {
     console.error('❌ Erro ao iniciar servidor:', error);
