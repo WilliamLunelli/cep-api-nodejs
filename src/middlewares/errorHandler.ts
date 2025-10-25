@@ -1,17 +1,13 @@
 import { Request, Response, NextFunction } from 'express';
 import { ZodError } from 'zod';
 
-/**
- * Error Handler Global
- * IMPORTANTE: Deve ter EXATAMENTE 4 parâmetros para o Express reconhecer!
- */
 export const errorHandler = (
   error: any,
-  req: Request, // ← Adicione isso!
+  req: Request,
   res: Response,
-  next: NextFunction // ← Adicione isso!
+  next: NextFunction
 ): void => {
-  console.error('❌ Erro capturado:', error);
+  console.error('Erro capturado:', error);
 
   // Erros de validação (Zod)
   if (error instanceof ZodError) {
