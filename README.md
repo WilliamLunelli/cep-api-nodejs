@@ -831,11 +831,10 @@ cep-api-nodejs/
 
 ## 👤 Contato
 
-**[SEU_NOME]**
+**William Pereira Lunelli**
 
-- GitHub: [@[SEU_GITHUB]](https://github.com/[SEU_GITHUB])
-- Email: [SEU_EMAIL]
-- LinkedIn: [SEU_LINKEDIN] (opcional)
+- Email: williamlunelli07@gmail.com
+- LinkedIn: https://www.linkedin.com/in/william-lunelli-6b1448300/
 
 ---
 
